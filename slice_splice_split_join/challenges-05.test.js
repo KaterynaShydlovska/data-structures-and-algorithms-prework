@@ -37,6 +37,17 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templateWithJQuery = () => {
+    starWarsPeople.forEach(person => {
+    //     $("#tepalte h2").append(person.name)    // <h2>Luke Skywalker</h2>
+    //     $("#tepalte h3").append(person.height)    // <h2>Luke Skywalker</h2>
+    //     $("#tepalte p").append(person.eye_color)    // <h2>Luke Skywalker</h2>
+    $('<h2> person.name</h2>').appendTo("#templete")
+    $('<h3> person.height</h3>').appendTo("#templete")
+    $('<p> person.eye_color</p>').appendTo("#templete")
+    $.html()
+    })
+
+
   // Solution code here...
 }
 
