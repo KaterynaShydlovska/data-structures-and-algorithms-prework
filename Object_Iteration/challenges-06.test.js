@@ -70,7 +70,10 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  // Solution code here...
+ return characters.map(character =>{
+   return `<h2>${character.name}</h2> \n <h3>${character.spouse}</h3>\n ${character.children}\n <p> ${character.house}</p>`
+ })
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -119,10 +122,10 @@ hasChildrenValues(characters, 'Sansa') will return false
 const hasChildrenValues = (arr, character) => {
     for (let i = 0; i < arr.length; i++){
       if (arr[i].name === character) {
-        let values = Object.values(arr[i]);
-        if (values === []) {
-          return false;
-        } else {
+        // console.log(character,i)
+        let values = Object.values(arr[i])[2];
+        console.log(values)
+        if (values.length) {
           return true;
         }
       }
@@ -142,9 +145,7 @@ The input and output of this function are the same as the input and output from 
 const hasChildrenEntries = (arr, character) => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].name === character) {
-        if (arr[i].children === []) {
-          return false;
-        } else {
+        if (arr[i].children.length >0) {
           return true;
         }
       }
@@ -172,7 +173,7 @@ const totalCharacters = (arr) => {
     let stringArray = newArr.toString();
     let oneArray = stringArray.split(',')
     let arrayLength = oneArray.length;
-    console.log(arrayLength)
+    // console.log(arrayLength)
     return arrayLength;
   };
 
