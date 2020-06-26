@@ -36,20 +36,30 @@ let $ = createSnippetWithJQuery(`
 </main>
 `);
 
+// const templateWithJQuery = () => {
+//   let $template = $('#template');
+//    starWarsPeople.forEach((person, idx) => {
+//       $template.find("h2").html(person.name)
+//       $template.find("h3").html(person.height)
+//       $template.find("p").html(person.eye_color)
+//       $('main').append(`<section id="${idx}"></section>`)
+//       $(`#${idx}`).append($template.html());
+//     });
+// }
+
 const templateWithJQuery = () => {
-    starWarsPeople.forEach(person => {
-    //     $("#tepalte h2").append(person.name)    // <h2>Luke Skywalker</h2>
-    //     $("#tepalte h3").append(person.height)    // <h2>Luke Skywalker</h2>
-    //     $("#tepalte p").append(person.eye_color)    // <h2>Luke Skywalker</h2>
-    $('<h2> person.name</h2>').appendTo("#templete")
-    $('<h3> person.height</h3>').appendTo("#templete")
-    $('<p> person.eye_color</p>').appendTo("#templete")
-    $.html()
-    })
-
-
-  // Solution code here...
-}
+  console.log($('main').html())
+  let $template = $('#template');
+   starWarsPeople.forEach((person, idx) => {
+    $('main').append(`<section id="${idx}"></section>`)
+    let $bla = $template;
+      $bla.find("h2").html(person.name)
+      $bla.find("h3").html(person.height)
+      $bla.find("p").html(person.eye_color)
+      $(`#${idx}`).append($bla.html());
+    });
+    console.log($('main').html())
+  }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
