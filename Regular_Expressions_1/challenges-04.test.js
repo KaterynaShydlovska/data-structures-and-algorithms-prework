@@ -23,7 +23,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const generateSubmitButton = () => {
-  // Solution code here...
+   $("form").append("<button type=\"submit\">submit</button>")
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,7 +39,14 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+    if (typeof(input)==='number') {
+        return true;
+    }
+    else if (input.match(/[0-9]+/ig)) {
+        return true;
+    }else{
+        return false;
+    }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +58,15 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+    let newString = str.replace(/[,.)]/g, ' ');
+  let splitAr = newString.split(' ');
+  let matchAr = [];
+  splitAr.forEach(element => {
+    if (element.match(/^([A-Z])/g)) {
+      matchAr.push(element);
+    }
+  });
+  return matchAr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,7 +76,13 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+    let newArray = [];
+  arr.forEach(element => {
+    if (element.match(/^([A-J])/g)) {
+      newArray.push(element);
+    }
+  });
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,7 +98,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+    let matchWord = /^(October|Oct|october|oct)\b/g;
+    return matchWord.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,7 +113,14 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+    let newArray = [];
+    let arr = str.split(' ');
+    arr.forEach((word) => {
+      if (str.includes((word.replace(/[.,]/, ' ') + ' '))) {
+        newArray.push(word + ' ');
+      }
+    });
+    return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,7 +136,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+    let newString = str.replace(/[aeiou]/ig, '_');
+  return newString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,8 +153,21 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
-  // Solution code here...
-};
+    let newarr =[];
+     let matchWord = /(ells)/g;
+     let arr = str.split(' ');
+      arr.forEach((word) => {
+        if (word.match(matchWord) ){
+          let nw = word.replace(".", "")
+         newarr.push(nw);
+        }
+        // return newarr;
+      });
+  
+     
+   
+   return newarr;
+  };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
