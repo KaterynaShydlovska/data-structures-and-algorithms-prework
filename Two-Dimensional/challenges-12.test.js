@@ -9,10 +9,13 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-// arr.reduce(function(accumulateor,value, index ) {
-//    if(accumulateor > value )    
-//  }, 0)
-};
+  return arr.reduce((accumulateor,value) => {
+     if(accumulateor > value ) {
+       return accumulateor;
+     } 
+     return value;
+  });
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,16 +41,14 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   let total =[];
-  for(let i =0; i< stores.length; i++){
-      for(let j =0; j< stores[i].length; j++){
-          let sum = 0;
-          sum += stores[i][j];
-          total.push(sum);
+  for(let i =0; i< hoursOpen.length; i++){
+    let sum = 0;
+      for(let j =0; j< stores.length; j++){
+          sum += stores[j][i];
       }
-
+      total.push(sum);
   }
   return total;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,7 +62,18 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let output =[];
+  let Object = function(a, b){
+    this.sales = a  + ' cookies';
+    this.time = b;
+  }
+  let i =0;
+  hours.forEach(hour =>{
+    output.push( new Object(data[i], hour)); 
+    i++;
+  })
+  console.log(output);
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,7 +98,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr.find(el => el.store === 'Pet store').items.find(tr => tr.name === "Treats").quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,7 +126,11 @@ const battleship = (board, row, col) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
 
-Write a function named calculateProduct that takes in a two-dimensional array of numbers, multiplies all of the numbers in each array, and returns the final product. This function should work for any number of inner arrays.
+Write a function named calculateProduct that takes in a two-dimensional array of numbers, multiplies all of the numbers in      220 | describe('Testing challenge 3', () => {
+      221 |   test('It should create an object of data for each store', () => {
+    > 222 |     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
+          |                                                            ^
+      223 |       { sales: '88 cookies', time: '9 a. each array, and returns the final product. This function should work for any number of inner arrays.
 
 For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
